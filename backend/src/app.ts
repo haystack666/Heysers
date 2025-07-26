@@ -14,7 +14,7 @@ const server = createServer(app);
 // Socket.io配置
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    origin: process.env['CORS_ORIGIN'] || 'http://localhost:3000',
     methods: ['GET', 'POST']
   }
 });
@@ -22,14 +22,14 @@ const io = new Server(server, {
 // 基础中间件
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: process.env['CORS_ORIGIN'] || 'http://localhost:3000',
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // 健康检查端点
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -38,7 +38,7 @@ app.get('/health', (req, res) => {
 });
 
 // 基础路由
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.json({
     message: 'Hayser Backend API',
     version: '1.0.0',
@@ -56,11 +56,11 @@ io.on('connection', (socket) => {
 });
 
 // 错误处理中间件
-app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error('服务器错误:', err);
   res.status(500).json({
     error: '服务器内部错误',
-    message: process.env.NODE_ENV === 'development' ? err.message : '请稍后重试'
+    message: process.env['NODE_ENV'] === 'development' ? err.message : '请稍后重试'
   });
 });
 
@@ -72,12 +72,12 @@ app.use('*', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env['PORT'] || 3001;
 
 server.listen(PORT, () => {
   console.log(`🚀 服务器运行在端口 ${PORT}`);
   console.log(`📊 健康检查: http://localhost:${PORT}/health`);
-  console.log(`🌍 环境: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🌍 环境: ${process.env['NODE_ENV'] || 'development'}`);
 });
 
 export { app, io };
