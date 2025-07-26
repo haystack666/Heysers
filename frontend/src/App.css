@@ -33,3 +33,160 @@
 }
 
 /* 自定义样式 */
+
+/* 全局布局样式 */
+.ant-layout {
+  background: #f0f2f5;
+}
+
+/* Header 样式增强 */
+.ant-layout-header {
+  padding: 0;
+  height: auto;
+  line-height: normal;
+}
+
+/* Content 样式 */
+.ant-layout-content {
+  background: #f0f2f5;
+}
+
+/* Footer 样式 */
+.ant-layout-footer {
+  padding: 0;
+  background: #fafafa;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .ant-layout-header {
+    padding: 0 16px !important;
+    min-height: 56px !important;
+  }
+
+  .ant-layout-content {
+    padding: 16px !important;
+  }
+
+  .ant-layout-footer {
+    padding: 16px 20px !important;
+  }
+
+  /* 移动端标题优化 */
+  .mobile-title {
+    font-size: 18px !important;
+  }
+
+  /* 移动端按钮优化 */
+  .mobile-button {
+    min-width: 44px !important;
+    height: 44px !important;
+  }
+
+  /* 移动端间距优化 */
+  .mobile-space {
+    gap: 8px !important;
+  }
+
+  /* 移动端文字大小 */
+  .mobile-text {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* 移动端卡片优化 */
+  .mobile-card {
+    margin: 8px 0 !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .ant-layout-header {
+    padding: 0 12px !important;
+    min-height: 52px !important;
+  }
+
+  .ant-layout-content {
+    padding: 12px !important;
+  }
+
+  .ant-layout-footer {
+    padding: 12px 16px !important;
+  }
+
+  /* 超小屏幕文字 */
+  .xs-text {
+    font-size: 12px !important;
+  }
+
+  /* 超小屏幕按钮 */
+  .xs-button {
+    min-width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* 平板优化 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ant-layout-header {
+    padding: 0 20px !important;
+  }
+
+  .ant-layout-content {
+    padding: 20px !important;
+  }
+
+  .ant-layout-footer {
+    padding: 20px 32px !important;
+  }
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 动画效果 */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 卡片悬停效果 */
+.hover-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
